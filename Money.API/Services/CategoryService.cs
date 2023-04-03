@@ -15,7 +15,10 @@ namespace Money.API.Services
 
         public async Task<List<Category>> GetCategoriesAsync()
         {
-            return await this._context.Categories.ToListAsync();
+            return await this._context.Categories
+                .Include(e => e.Children)
+                .Where(c => c.ParentId == null)
+                .ToListAsync();
         }
     }
 }

@@ -20,7 +20,6 @@ namespace Money.API.Models
 
         [JsonIgnore]
         public virtual Category Parent{ get; set; }
-        [JsonIgnore]
         public virtual ICollection<Category> Children { get; set; }
         [JsonIgnore]
         public virtual ICollection<Transaction> Transactions { get; set; }

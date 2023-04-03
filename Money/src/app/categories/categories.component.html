@@ -1,0 +1,9 @@
+<h1>Categories</h1>
+<div *ngIf="categories">
+  <ul *ngFor="let category of categories">
+    <li>{{ category.name }}</li>
+    <ul *ngFor="let child of category.children">
+      <li>{{ child.name }}</li>
+    </ul>
+  </ul>
+</div>
