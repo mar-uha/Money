@@ -8,3 +8,22 @@
     <button (click)="fileUpload.click()">
     </button>
 </div>
+
+<h1>Transactions</h1>
+
+<table>
+  <tr>
+    <th>Date</th>
+    <th>Description</th>
+    <th>Category</th>
+    <th>Debit</th>
+    <th>Credit</th>
+  </tr>
+  <tr *ngFor="let transaction of transactions">
+    <td>{{ transaction.date | date:'MMM d, y'}}</td>
+    <td>{{ transaction.description }}</td>
+    <td>{{ transaction.category.name }}</td>
+    <td>{{ transaction.debit | currency:'CAD'}}</td>
+    <td>{{ transaction.credit | currency:'CAD'}}</td>
+  </tr>
+</table>

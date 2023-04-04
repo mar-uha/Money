@@ -1,15 +1,23 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { TransactionService } from '../transaction.service';
 
 @Component({
   selector: 'app-transactions',
   templateUrl: './transactions.component.html',
   styleUrls: ['./transactions.component.sass']
 })
-export class TransactionsComponent {
+export class TransactionsComponent implements OnInit {
   fileName = '';
+  transactions: any[] = []; 
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private transactionService: TransactionService) {
+  }
+
+  ngOnInit(): void {
+    this.transactionService.get().subscribe((data) => {
+      this.transactions = data;
+    })
   }
 
   onFileSelected(event: any) {

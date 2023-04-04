@@ -3,6 +3,7 @@ using CsvHelper;
 using Money.API.Models;
 using System.Globalization;
 using Money.API.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace Money.API.Services
 {
@@ -13,6 +14,13 @@ namespace Money.API.Services
         public TransactionService(ApiDbContext ctx)
         {
             _context = ctx;
+        }
+
+        public async Task<List<Transaction>> GetTransactionsAsync()
+        {
+            return await this._context.Transactions
+                .Include(t => t.Category)
+                .ToListAsync();
         }
 
         public void Import(IFormFile file)

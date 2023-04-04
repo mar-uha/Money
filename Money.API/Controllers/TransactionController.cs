@@ -29,6 +29,12 @@ namespace Money.API.Controllers
             _service = service;
         }
 
+        [HttpGet]
+        public async Task<List<Transaction>> Get()
+        {
+            return await _service.GetTransactionsAsync();
+        }
+
         /// <summary>
         /// Single File Upload
         /// </summary>
