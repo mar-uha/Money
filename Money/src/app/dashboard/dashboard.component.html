@@ -19,6 +19,10 @@
         <ul *ngFor="let category of dashboardMonth.categories">
           <li>{{ category.amount | currency:'CAD' }} {{ category.name }}</li>
           <!-- <mat-progress-bar mode="determinate" value="40" class="amount-progress-bar"></mat-progress-bar> -->
+          <ul *ngFor="let subCategory of category.subCategory">
+            <li>{{ subCategory.amount | currency:'CAD' }} {{ subCategory.name }}</li>
+            <!-- <mat-progress-bar mode="determinate" value="40" class="amount-progress-bar"></mat-progress-bar> -->
+          </ul>
         </ul>
       </mat-tab>
     </mat-tab-group>
