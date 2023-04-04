@@ -1,4 +1,22 @@
-<router-outlet></router-outlet>
-<app-dashboard></app-dashboard>
-<app-transactions></app-transactions>
-<app-categories></app-categories>
+<mat-toolbar class="header">
+	<button mat-icon-button (click)="sidenav.toggle()">
+		<mat-icon>menu</mat-icon>
+	</button>
+	<span>{{ title }}</span>
+</mat-toolbar>
+
+<mat-sidenav-container class="container">
+	<mat-sidenav #sidenav mode="side" opened="" class="sidenav">
+		<mat-nav-list>
+			<a mat-list-item routerLink="/">Dashboard</a>
+			<a mat-list-item routerLink="/Categories">Categories</a>
+			<a mat-list-item routerLink="/Transactions">Transactions</a>
+		</mat-nav-list>
+	</mat-sidenav>
+
+	<mat-sidenav-content>
+		<router-outlet></router-outlet>
+	</mat-sidenav-content>
+</mat-sidenav-container>
+
+<mat-toolbar class="footer">Money 2023</mat-toolbar>

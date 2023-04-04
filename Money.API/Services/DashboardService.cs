@@ -23,6 +23,8 @@ namespace Money.API.Services
                     t.Date.Month,
                     t.Date.Year,
                     Amount = t.Credit == 0 ? -t.Debit : t.Credit,
+                    t.Debit,
+                    t.Credit,
                 }).ToList();
 
              return transactions.GroupBy(d => d.Year)
@@ -33,6 +35,8 @@ namespace Money.API.Services
                               .Select(m => new DashboardMonth
                               {
                                   Month = m.Key,
+                                  Debit = m.Sum(d => -d.Debit),
+                                  Credit = m.Sum(d => d.Credit),
                                   Categories = m.GroupBy(c => new { c.CategoryId, c.CategoryName })
                                                 .Select(c => new SumByCategory
                                                 {

@@ -1,10 +1,13 @@
 <h1>Dashboard</h1>
 
+<!-- Year -->
 <div *ngIf="dashboardYears">
   <ul *ngFor="let dashboardYear of dashboardYears">
     <li>{{ dashboardYear.year }}</li>
+    
+    <!-- Month -->
     <ul *ngFor="let dashboardMonth of dashboardYear.months">
-      <li>{{ dashboardMonth.month }}</li>
+      <li>{{ getDate(dashboardMonth.month) | date: 'MMMM' }} (Debit: {{ dashboardMonth.debit | currency:'CAD' }} / Credit: {{ dashboardMonth.credit | currency:'CAD' }} )</li>
       <ul *ngFor="let category of dashboardMonth.categories">
         <li>{{ category.amount | currency:'CAD' }} {{ category.name }}</li>
       </ul>

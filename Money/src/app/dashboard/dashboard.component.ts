@@ -19,4 +19,8 @@ export class DashboardComponent implements OnInit {
     })
   }
 
+  protected getDate(month: number): Date {
+    return new Date(2000, month-1, 2);
+  }
+
 }
