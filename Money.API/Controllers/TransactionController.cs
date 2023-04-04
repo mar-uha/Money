@@ -21,9 +21,9 @@ namespace Money.API.Controllers
     {
 
         private readonly ILogger<TransactionController> _logger;
-        private readonly ICategoryService _service;
+        private readonly ITransactionService _service;
 
-        public TransactionController(ILogger<TransactionController> logger, ICategoryService service)
+        public TransactionController(ILogger<TransactionController> logger, ITransactionService service)
         {
             _logger = logger;
             _service = service;
@@ -35,7 +35,7 @@ namespace Money.API.Controllers
         /// <param name="file"></param>
         /// <returns></returns>
         [HttpPost("Import")]
-        public async Task<ActionResult> Import([FromForm] IFormFile transactionsFile)
+        public async Task<ActionResult> ImportAsync([FromForm] IFormFile transactionsFile)
         {
             if (transactionsFile == null)
             {
@@ -44,20 +44,7 @@ namespace Money.API.Controllers
 
             try
             {
-                List<TransactionNBC> transactions = new List<TransactionNBC>();
-
-                var config = new CsvConfiguration(CultureInfo.InvariantCulture)
-                {
-                    Delimiter = ";"
-                };
-
-                using (var stream = transactionsFile.OpenReadStream())
-                using (var sr = new StreamReader(stream))
-                using (var csv = new CsvReader(sr, config))
-                {
-                    var records = csv.GetRecords<TransactionNBC>();
-                    transactions = records.ToList();
-                }
+                this._service.Import(transactionsFile);
 
                 return Ok();
             }
