@@ -12,7 +12,8 @@ builder.Services.AddDbContext<ApiDbContext>(options =>
     options.UseSqlite("DataSource=money.db; Cache=Shared"));
 
 builder.Services.AddScoped<ICategoryService, CategoryService>()
-    .AddScoped<ITransactionService, TransactionService>();
+    .AddScoped<ITransactionService, TransactionService>()
+    .AddScoped<IDashboardService, DashboardService>();
 
 var app = builder.Build();
 

@@ -1,0 +1,13 @@
+<h1>Dashboard</h1>
+
+<div *ngIf="dashboardYears">
+  <ul *ngFor="let dashboardYear of dashboardYears">
+    <li>{{ dashboardYear.year }}</li>
+    <ul *ngFor="let dashboardMonth of dashboardYear.months">
+      <li>{{ dashboardMonth.month }}</li>
+      <ul *ngFor="let category of dashboardMonth.categories">
+        <li>{{ category.amount | currency:'CAD' }} {{ category.name }}</li>
+      </ul>
+    </ul>
+  </ul>
+</div>
