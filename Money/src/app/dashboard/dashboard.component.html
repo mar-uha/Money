@@ -1,16 +1,25 @@
 <h1>Dashboard</h1>
 
-<!-- Year -->
-<div *ngIf="dashboardYears">
-  <ul *ngFor="let dashboardYear of dashboardYears">
-    <li>{{ dashboardYear.year }}</li>
-    
+<!-- Select Year -->
+<mat-form-field appearance="fill">
+  <mat-label>Select year</mat-label>
+  <mat-select [(value)]="selectedYear" (valueChange)="onYearChange($event)">
+    <mat-option *ngFor="let yearAvailable of yearsAvailable" [value]="yearAvailable">{{yearAvailable}}</mat-option>
+  </mat-select>
+</mat-form-field>
+
+
+<div *ngIf="dashboardYear">
     <!-- Month -->
-    <ul *ngFor="let dashboardMonth of dashboardYear.months">
-      <li>{{ getDate(dashboardMonth.month) | date: 'MMMM' }} (Debit: {{ dashboardMonth.debit | currency:'CAD' }} / Credit: {{ dashboardMonth.credit | currency:'CAD' }} )</li>
-      <ul *ngFor="let category of dashboardMonth.categories">
-        <li>{{ category.amount | currency:'CAD' }} {{ category.name }}</li>
-      </ul>
-    </ul>
-  </ul>
+    <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
+      <mat-tab *ngFor="let dashboardMonth of dashboardYear.months"
+        label="{{ getDate(dashboardMonth.month) | date: 'MMMM' }}">
+        <p>Debit: {{ dashboardMonth.debit | currency:'CAD' }}</p>
+        <p>Credit: {{ dashboardMonth.credit | currency:'CAD' }}</p>
+        <ul *ngFor="let category of dashboardMonth.categories">
+          <li>{{ category.amount | currency:'CAD' }} {{ category.name }}</li>
+          <!-- <mat-progress-bar mode="determinate" value="40" class="amount-progress-bar"></mat-progress-bar> -->
+        </ul>
+      </mat-tab>
+    </mat-tab-group>
 </div>

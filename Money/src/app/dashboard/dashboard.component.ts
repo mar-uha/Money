@@ -7,20 +7,28 @@ import { DashboardService } from '../dashboard.service';
   styleUrls: ['./dashboard.component.sass']
 })
 export class DashboardComponent implements OnInit {
-  dashboardYears: any[] = [];
-  
-  constructor(private dashboardService: DashboardService) {
+  dashboardYear: any;
+  selectedYear: number;
+  yearsAvailable = [2023, 2022, 2021, 2020];
 
+  constructor(private dashboardService: DashboardService) {
+    this.selectedYear = new Date().getFullYear();
   }
 
   ngOnInit(): void {
-    this.dashboardService.get().subscribe((data) => {
-      this.dashboardYears = data;
+    this.dashboardService.get(this.selectedYear).subscribe((data) => {
+      this.dashboardYear = data;
     })
   }
 
   protected getDate(month: number): Date {
     return new Date(2000, month-1, 2);
+  }
+
+  protected onYearChange(year: number) {
+    this.dashboardService.get(year).subscribe((data) => {
+      this.dashboardYear = data;
+    })
   }
 
 }

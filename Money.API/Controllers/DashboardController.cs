@@ -22,9 +22,9 @@ namespace Money.API.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<DashboardYear> Get()
+        public DashboardYear Get(int year)
         {
-            return _service.GetDashboardAsync();
+            return _service.GetDashboard(year);
         }
     }
 }

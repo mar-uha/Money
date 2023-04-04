@@ -13,9 +13,10 @@ namespace Money.API.Services
             _context = ctx;
         }
 
-        public IEnumerable<DashboardYear> GetDashboardAsync()
+        public DashboardYear GetDashboard(int year)
         {
             var transactions = _context.Transactions
+                .Where(t => t.Date.Year == year)
                 .Select(t => new
                 {
                     t.CategoryId,
@@ -45,7 +46,8 @@ namespace Money.API.Services
                                                 })
                                                 .OrderBy(o => o.Amount)
                               })
-                });
+                })
+                .SingleOrDefault();
         }
     }
 }

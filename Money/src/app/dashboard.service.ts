@@ -8,7 +8,7 @@ export class DashboardService {
 
   constructor(private http: HttpClient) { }
 
-  public get() {
-    return this.http.get<any[]>('/api/dashboard');
+  public get(year: number) {
+    return this.http.get<any[]>('/api/dashboard', { params: {year: year} });
   }
 }
