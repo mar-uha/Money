@@ -1,17 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Money.API.Data;
 using Money.API.Models;
 using Money.API.Services;
-using System.Formats.Asn1;
-using System.Globalization;
-using System;
-using System.Text.Json;
-using CsvHelper;
-using CsvHelper.Configuration;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-using CsvHelper.TypeConversion;
-using System.Reflection.PortableExecutable;
 
 namespace Money.API.Controllers
 {

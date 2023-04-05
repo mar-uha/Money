@@ -2,6 +2,7 @@
 using Money.API.Data;
 using Money.API.Models;
 using System.Data;
+using System.Diagnostics;
 
 namespace Money.API.Services
 {
@@ -33,22 +34,23 @@ namespace Money.API.Services
                 })
                 .ToList();
 
-             return transactions.GroupBy(d => d.Year)
-                .Select(d => new DashboardYear
-                {
-                    Year = d.Key,
-                    Months = d.GroupBy(m => m.Month)
-                              .Select(m => new DashboardMonth
-                              {
-                                  Month = m.Key,
-                                  Debit = m.Sum(d => -d.Debit),
-                                  Credit = m.Sum(d => d.Credit),
-                                  Categories = m.GroupBy(c => new { c.ParentCategoryId, c.ParentCategoryName })
-                                                .Select(c => new SumByCategory
-                                                {
-                                                    Name = c.Key.ParentCategoryName,
-                                                    Amount = c.Sum(u => u.Amount),
-                                                    SubCategory = c.GroupBy(z => new { z.CategoryId, z.CategoryName })
+            return transactions.GroupBy(d => d.Year)
+               .Select(d => new DashboardYear
+               {
+                   Year = d.Key,
+                   Months = d.GroupBy(m => m.Month)
+                             .Select(m => new DashboardMonth
+                             {
+                                 Month = m.Key,
+                                 Debit = m.Sum(d => -d.Debit),
+                                 Credit = m.Sum(d => d.Credit),
+                                 Categories = m.GroupBy(c => new { c.ParentCategoryId, c.ParentCategoryName })
+                                               .Select(c => new SumByCategory
+                                               {
+                                                   Name = c.Key.ParentCategoryName,
+                                                   Amount = c.Sum(u => u.Amount),
+                                                   Percentage = c.Sum(u => u.Amount) / (c.Sum(u => u.Amount) < 0 ? m.Sum(d => -d.Debit) : m.Sum(d => d.Credit)),
+                                                   SubCategory = c.GroupBy(z => new { z.CategoryId, z.CategoryName })
                                                                     .Select(c => new SumByCategory
                                                                     {
                                                                         Name = c.Key.CategoryName,

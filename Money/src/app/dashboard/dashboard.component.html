@@ -18,8 +18,8 @@
         <p>Credit: {{ dashboardMonth.credit | currency:'CAD' }}</p>
 
         <ul *ngFor="let category of dashboardMonth.categories">
-          <li><b>{{ category.name }}</b> {{ category.amount | currency:'CAD' }}</li>
-          <!-- <mat-progress-bar mode="determinate" value="40" class="amount-progress-bar"></mat-progress-bar> -->
+          <li><b>{{ category.name }}</b> {{ category.amount | currency:'CAD' }} ({{ category.percentage | percent:'1.0-1'}})</li>
+          <mat-progress-bar mode="determinate" [value]="category.percentage * 100" class="amount-progress-bar"></mat-progress-bar>
           <ul *ngFor="let subCategory of category.subCategory">
             <li>{{ subCategory.name }} {{ subCategory.amount | currency:'CAD' }}</li>
             <!-- <mat-progress-bar mode="determinate" value="40" class="amount-progress-bar"></mat-progress-bar> -->
