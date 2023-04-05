@@ -16,11 +16,12 @@
         label="{{ getDate(dashboardMonth.month) | date: 'MMMM' }}">
         <p>Debit: {{ dashboardMonth.debit | currency:'CAD' }}</p>
         <p>Credit: {{ dashboardMonth.credit | currency:'CAD' }}</p>
+
         <ul *ngFor="let category of dashboardMonth.categories">
-          <li>{{ category.amount | currency:'CAD' }} {{ category.name }}</li>
+          <li><b>{{ category.name }}</b> {{ category.amount | currency:'CAD' }}</li>
           <!-- <mat-progress-bar mode="determinate" value="40" class="amount-progress-bar"></mat-progress-bar> -->
           <ul *ngFor="let subCategory of category.subCategory">
-            <li>{{ subCategory.amount | currency:'CAD' }} {{ subCategory.name }}</li>
+            <li>{{ subCategory.name }} {{ subCategory.amount | currency:'CAD' }}</li>
             <!-- <mat-progress-bar mode="determinate" value="40" class="amount-progress-bar"></mat-progress-bar> -->
           </ul>
         </ul>

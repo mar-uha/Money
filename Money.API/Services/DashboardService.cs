@@ -23,8 +23,8 @@ namespace Money.API.Services
                 {
                     t.CategoryId,
                     CategoryName = t.Category.Name,
-                    ParentCategoryId = t.Category.ParentId,
-                    ParentCategoryName = t.Category.Parent.Name,
+                    ParentCategoryId = t.Category.ParentId ?? t.CategoryId,
+                    ParentCategoryName = t.Category.Parent.Name ?? t.Category.Name,
                     t.Date.Month,
                     t.Date.Year,
                     Amount = t.Credit == 0 ? -t.Debit : t.Credit,
