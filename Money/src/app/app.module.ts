@@ -15,13 +15,18 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatSelectModule } from '@angular/material/select';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { FormsModule } from '@angular/forms';
+import { DialogEditBudgetComponent } from './dialog-edit-budget/dialog-edit-budget.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
     AppComponent,
     CategoriesComponent,
     TransactionsComponent,
-    DashboardComponent
+    DashboardComponent,
+    DialogEditBudgetComponent
   ],
   imports: [
     BrowserModule,
@@ -36,6 +41,9 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     MatTabsModule,
     MatSelectModule,
     MatProgressBarModule,
+    MatDialogModule,
+    MatInputModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

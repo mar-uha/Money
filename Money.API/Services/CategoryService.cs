@@ -20,5 +20,13 @@ namespace Money.API.Services
                 .Where(c => c.ParentId == null)
                 .ToListAsync();
         }
+
+        public async Task<int> UpdateBudgetAsync(long id, int budget)
+        {
+            var category = _context.Categories.Where(c => c.Id == id).SingleOrDefault();
+            category.Budget = budget;
+
+            return await _context.SaveChangesAsync();
+        }
     }
 }

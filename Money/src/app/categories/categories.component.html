@@ -1,7 +1,7 @@
 <h1>Categories</h1>
 <div *ngIf="categories">
   <ul *ngFor="let category of categories">
-    <li>{{ category.name }}</li>
+    <li>{{ category.name }} ({{ category.budget | currency:'CAD' }}) <button mat-icon-button aria-label="Edit budget" (click)="openDialog(category)"><mat-icon>edit</mat-icon></button></li>
     <ul *ngFor="let child of category.children">
       <li>{{ child.name }}</li>
     </ul>

@@ -26,5 +26,18 @@ namespace Money.API.Controllers
         {
             return await _service.GetCategoriesAsync();
         }
+
+        [HttpPut("{id}/updateBudget")]
+        public async Task<IActionResult> PutBudget(long id, [FromBody]int budget)
+        {
+            if (budget < 0)
+            {
+                return BadRequest();
+            }
+
+            var test = await this._service.UpdateBudgetAsync(id, budget);
+
+            return NoContent();
+        }
     }
 }

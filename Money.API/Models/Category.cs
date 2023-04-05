@@ -16,6 +16,8 @@ namespace Money.API.Models
         [StringLength(200)]
         public string? Name { get; set; }
 
+        public decimal? Budget { get; set; }
+
         public int? ParentId { get; set; }
 
         [JsonIgnore]

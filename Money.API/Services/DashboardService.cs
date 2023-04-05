@@ -59,7 +59,7 @@ namespace Money.API.Services
                                                                     })
                                                 })
                                                 .OrderBy(o => o.Amount)
-                              })
+                              }).OrderBy(o => o.Month)
                 })
                 .SingleOrDefault();
         }
