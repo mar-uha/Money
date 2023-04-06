@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DashboardService } from '../dashboard.service';
+import { DashboardYear } from '../models/dashboard-year';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,7 +8,7 @@ import { DashboardService } from '../dashboard.service';
   styleUrls: ['./dashboard.component.sass']
 })
 export class DashboardComponent implements OnInit {
-  dashboardYear: any;
+  dashboardYear?: DashboardYear;
   selectedYear: number;
   yearsAvailable = [2023, 2022, 2021, 2020];
 
@@ -16,19 +17,18 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.dashboardService.get(this.selectedYear).subscribe((data) => {
+    this.dashboardService.get(this.selectedYear).subscribe((data: DashboardYear) => {
       this.dashboardYear = data;
     })
   }
 
   protected getDate(month: number): Date {
-    return new Date(2000, month-1, 2);
+    return new Date(2000, month - 1, 2);
   }
 
-  protected onYearChange(year: number) {
-    this.dashboardService.get(year).subscribe((data) => {
+  protected onYearChange(year: number): void {
+    this.dashboardService.get(year).subscribe((data: DashboardYear) => {
       this.dashboardYear = data;
     })
   }
-
 }

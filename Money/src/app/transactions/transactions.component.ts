@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { TransactionService } from '../transaction.service';
+import { Transaction } from '../models/transaction';
 
 @Component({
   selector: 'app-transactions',
@@ -9,32 +9,26 @@ import { TransactionService } from '../transaction.service';
 })
 export class TransactionsComponent implements OnInit {
   fileName = '';
-  transactions: any[] = []; 
+  transactions: Transaction[] = [];
 
-  constructor(private http: HttpClient, private transactionService: TransactionService) {
-  }
+  constructor(private transactionService: TransactionService) { }
 
   ngOnInit(): void {
-    this.transactionService.get().subscribe((data) => {
+    this.transactionService.get().subscribe((data: Transaction[]) => {
       this.transactions = data;
     })
   }
 
-  onFileSelected(event: any) {
-
-    const file: File = event.target.files[0];
-
-    if (file) {
-
-      this.fileName = file.name;
-
-      const formData = new FormData();
-
-      formData.append("transactionsFile", file, this.fileName);
-
-      const upload$ = this.http.post("/api/transaction/import", formData);
-
-      upload$.subscribe();
+  protected onFileSelected(event: Event) {
+    const inputElement = event.target as HTMLInputElement
+    if (!inputElement.files?.length) {
+      return;
     }
+
+    const file: File = inputElement.files[0];
+
+    this.fileName = file.name;
+
+    this.transactionService.importTransaction(file).subscribe();
   }
 }

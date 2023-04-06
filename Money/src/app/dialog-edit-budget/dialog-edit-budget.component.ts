@@ -13,7 +13,7 @@ export class DialogEditBudgetComponent {
     @Inject(MAT_DIALOG_DATA) public data: DialogEditBudgetData,
   ) {}
 
-  onCancelClick(): void {
+  protected onCancelClick(): void {
     this.dialogRef.close();
   }
 }

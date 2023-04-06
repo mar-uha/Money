@@ -1,9 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Money.API.Data;
 using Money.API.Models;
 using Money.API.Services;
-using System.Text.Json;
 
 namespace Money.API.Controllers
 {
@@ -35,7 +32,7 @@ namespace Money.API.Controllers
                 return BadRequest();
             }
 
-            var test = await this._service.UpdateBudgetAsync(id, budget);
+            await this._service.UpdateBudgetAsync(id, budget);
 
             return NoContent();
         }
