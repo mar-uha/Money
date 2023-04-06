@@ -3,7 +3,7 @@ import { DashboardService } from '../dashboard.service';
 import { DashboardYear } from '../models/dashboard-year';
 
 @Component({
-  selector: 'app-dashboard',
+  selector: 'mny-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.sass']
 })

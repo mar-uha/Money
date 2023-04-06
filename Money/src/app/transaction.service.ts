@@ -22,7 +22,7 @@ export class TransactionService {
 
   /**
    * Import new transactions from CSV file in database.
-   * @param file CSV Dile to import
+   * @param file CSV File to import.
    * @returns 
    */
   public importTransaction(file: File): Observable<void> {

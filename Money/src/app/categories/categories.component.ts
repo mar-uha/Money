@@ -6,7 +6,7 @@ import { DialogEditBudgetData } from '../dialog-edit-budget/dialog-edit-budget-d
 import { Category } from '../models/category';
 
 @Component({
-  selector: 'app-categories',
+  selector: 'mny-categories',
   templateUrl: './categories.component.html',
   styleUrls: ['./categories.component.sass']
 })

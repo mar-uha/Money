@@ -3,7 +3,7 @@ import { TransactionService } from '../transaction.service';
 import { Transaction } from '../models/transaction';
 
 @Component({
-  selector: 'app-transactions',
+  selector: 'mny-transactions',
   templateUrl: './transactions.component.html',
   styleUrls: ['./transactions.component.sass']
 })

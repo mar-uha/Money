@@ -3,7 +3,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { DialogEditBudgetData } from './dialog-edit-budget-data';
 
 @Component({
-  selector: 'app-dialog-edit-budget',
+  selector: 'mny-dialog-edit-budget',
   templateUrl: './dialog-edit-budget.component.html',
   styleUrls: ['./dialog-edit-budget.component.sass']
 })
