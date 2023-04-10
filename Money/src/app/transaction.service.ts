@@ -27,8 +27,8 @@ export class TransactionService {
    */
   public importTransaction(file: File): Observable<void> {
     const formData = new FormData();
-    formData.append("transactionsFile", file, file.name);
+    formData.append('transactionsFile', file, file.name);
 
-    return this.http.post<void>("/api/transaction/import", formData);
+    return this.http.post<void>(`${this.transactionsURL}/import`, formData);
   }
 }

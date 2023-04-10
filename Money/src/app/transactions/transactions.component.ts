@@ -19,6 +19,12 @@ export class TransactionsComponent implements OnInit {
     })
   }
 
+  /**
+   * Event throw when a file is selected (bind on the event "change").
+   * Import transaction in the file passed in parameter.
+   * @param event Event triggered
+   * @returns 
+   */
   protected onFileSelected(event: Event) {
     const inputElement = event.target as HTMLInputElement
     if (!inputElement.files?.length) {

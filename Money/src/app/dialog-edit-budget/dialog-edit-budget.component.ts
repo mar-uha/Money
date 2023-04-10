@@ -13,6 +13,10 @@ export class DialogEditBudgetComponent {
     @Inject(MAT_DIALOG_DATA) public data: DialogEditBudgetData,
   ) {}
 
+  /**
+   * Event triggered when the user click on cancel button.
+   * Close the dialog component.
+   */
   protected onCancelClick(): void {
     this.dialogRef.close();
   }

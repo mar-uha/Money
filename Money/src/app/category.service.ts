@@ -17,7 +17,7 @@ export class CategoryService {
    * @returns 
    */
   public get(): Observable<Category[]> {
-    return this.http.get<Category[]>(`${this.categoriesURL}`);
+    return this.http.get<Category[]>(this.categoriesURL);
   }
 
   /**

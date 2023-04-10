@@ -20,7 +20,12 @@ export class CategoriesComponent implements OnInit {
     this.loadData();
   }
 
+  /**
+   * Open a dialog to edit the category's budget.
+   * @param category Category to edit.
+   */
   protected openDialog(category: Category): void {
+    // open the edit dialog
     const dialogRef = this.dialog.open(DialogEditBudgetComponent, {
       data: {
         id: category.id,
@@ -31,12 +36,16 @@ export class CategoriesComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((dialogData: DialogEditBudgetData) => {
       if (dialogData) {
+        // update the category's budget
         this.categoryService.updateBudget(dialogData.id, dialogData.budget)
           .subscribe(() => this.loadData());
       }
     });
   }
 
+  /**
+   * Get all categories available.
+   */
   private loadData(): void {
     this.categoryService.get().subscribe((data: Category[]) => {
       this.categories = data;

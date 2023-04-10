@@ -22,10 +22,20 @@ export class DashboardComponent implements OnInit {
     })
   }
 
+  /**
+   * Return a JS Date from a month initilized to the 2nd day of the year 2000.
+   * @param month Integer of the month. 1 = January
+   * @returns 
+   */
   protected getDate(month: number): Date {
     return new Date(2000, month - 1, 2);
   }
 
+  /**
+   * Event triggered when the user select a new year.
+   * Get all necessary data for the year.
+   * @param year year selected.
+   */
   protected onYearChange(year: number): void {
     this.dashboardService.get(year).subscribe((data: DashboardYear) => {
       this.dashboardYear = data;
