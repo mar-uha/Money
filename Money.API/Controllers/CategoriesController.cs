@@ -6,13 +6,13 @@ namespace Money.API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class CategoryController : ControllerBase
+    public class CategoriesController : ControllerBase
     {
 
-        private readonly ILogger<CategoryController> _logger;
-        private readonly ICategoryService _service;
+        private readonly ILogger<CategoriesController> _logger;
+        private readonly ICategoriesService _service;
 
-        public CategoryController(ILogger<CategoryController> logger, ICategoryService service)
+        public CategoriesController(ILogger<CategoriesController> logger, ICategoriesService service)
         {
             _logger = logger;
             _service = service;

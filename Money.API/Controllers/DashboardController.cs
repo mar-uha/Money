@@ -12,10 +12,10 @@ namespace Money.API.Controllers
     public class DashboardController : ControllerBase
     {
 
-        private readonly ILogger<CategoryController> _logger;
+        private readonly ILogger<CategoriesController> _logger;
         private readonly IDashboardService _service;
 
-        public DashboardController(ILogger<CategoryController> logger, IDashboardService service)
+        public DashboardController(ILogger<CategoriesController> logger, IDashboardService service)
         {
             _logger = logger;
             _service = service;

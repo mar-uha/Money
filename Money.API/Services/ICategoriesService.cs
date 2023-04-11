@@ -2,7 +2,7 @@
 
 namespace Money.API.Services
 {
-    public interface ICategoryService
+    public interface ICategoriesService
     {
         public Task<List<Category>> GetCategoriesAsync();
 

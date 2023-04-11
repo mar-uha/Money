@@ -2,7 +2,7 @@
 
 namespace Money.API.Services
 {
-    public interface ITransactionService
+    public interface ITransactionsService
     {
         public Task<List<Transaction>> GetTransactionsAsync();
         public void Import(IFormFile file);

@@ -6,13 +6,13 @@ namespace Money.API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class TransactionController : ControllerBase
+    public class TransactionsController : ControllerBase
     {
 
-        private readonly ILogger<TransactionController> _logger;
-        private readonly ITransactionService _service;
+        private readonly ILogger<TransactionsController> _logger;
+        private readonly ITransactionsService _service;
 
-        public TransactionController(ILogger<TransactionController> logger, ITransactionService service)
+        public TransactionsController(ILogger<TransactionsController> logger, ITransactionsService service)
         {
             _logger = logger;
             _service = service;

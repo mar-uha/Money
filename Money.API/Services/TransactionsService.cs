@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Money.API.Services
 {
-    public class TransactionService : ITransactionService
+    public class TransactionsService : ITransactionsService
     {
         private readonly ApiDbContext _context;
 
-        public TransactionService(ApiDbContext ctx)
+        public TransactionsService(ApiDbContext ctx)
         {
             _context = ctx;
         }

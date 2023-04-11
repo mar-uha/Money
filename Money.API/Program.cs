@@ -12,8 +12,8 @@ builder.Services.AddControllers();
 builder.Services.AddDbContext<ApiDbContext>(options =>
     options.UseSqlite("DataSource=money.db; Cache=Shared"));
 
-builder.Services.AddScoped<ICategoryService, CategoryService>()
-    .AddScoped<ITransactionService, TransactionService>()
+builder.Services.AddScoped<ICategoriesService, CategoriesService>()
+    .AddScoped<ITransactionsService, TransactionsService>()
     .AddScoped<IDashboardService, DashboardService>();
 
 builder.Services.AddSwaggerGen(options =>

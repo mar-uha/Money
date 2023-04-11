@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class TransactionService {
 
-  private get transactionsURL(): string { return '/api/transaction' }
+  private get transactionsURL(): string { return '/api/transactions' }
 
   constructor(private http: HttpClient) { }
 

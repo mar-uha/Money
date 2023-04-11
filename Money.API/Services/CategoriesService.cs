@@ -4,11 +4,11 @@ using Money.API.Models;
 
 namespace Money.API.Services
 {
-    public class CategoryService : ICategoryService
+    public class CategoriesService : ICategoriesService
     {
         private readonly ApiDbContext _context;
 
-        public CategoryService(ApiDbContext ctx)
+        public CategoriesService(ApiDbContext ctx)
         {
             _context = ctx;
         }
